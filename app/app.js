@@ -23,9 +23,7 @@ const auth = getAuth();
 
 let signUpBtn = document.getElementById("signUpBtn");
 let signInBtn = document.getElementById("signInBtn");
-// let signOutBtn = document.getElementById("signOutBtn");
-let editProductsBtn = document.getElementById("editProductsBtn");
-
+let signOutBtn = document.getElementById("signOutBtn");
 
 function signUp() {
   let signUpEmail = document.getElementById("signUpEmail").value;
@@ -62,21 +60,15 @@ function signIn(){
   });
 }
 
-// const userSignOut = () => {
-//     signOut(auth).then(() => {
-//         // window.location.href = "index.html";
-//         alert("yay");
-//     }).catch((error) => {
-//         // An error happened.
-//       });
-// }
-
-function goToAdminPage(){
-    window.location.href = "admin.html";
+const userSignOut = () => {
+    signOut(auth).then(() => {
+        // window.location.href = "index.html";
+        alert("yay");
+    }).catch((error) => {
+        // An error happened.
+      });
 }
-
 
 signUpBtn.addEventListener("click", signUp);
 signInBtn.addEventListener("click", signIn);
-// signOutBtn.addEventListener("click", userSignOut);
-editProductsBtn.addEventListener("click",goToAdminPage);
+signOutBtn.addEventListener("click", userSignOut);
