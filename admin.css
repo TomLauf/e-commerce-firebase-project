@@ -1,0 +1,42 @@
+.toolbar{
+    width: 100%;
+    padding: 0%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    height: 8%;
+    background-color: #F0F8FF;
+}
+
+.material-symbols-outlined{
+    cursor: pointer;
+}
+
+.material-symbols-outlined:hover{
+    cursor: pointer;
+}
+
+#newProductForm{
+    /* display: none; */
+    position: fixed;
+    top: 70px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 432px 432px 432px;
+    /* grid-template-rows: 100px 100px 100px; */
+    background-color: #2196F3;
+    gap: 50px;
+    padding: 10px;
+
+  }
+
+  .product {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    /* padding: 20px; */
+    font-size: 30px;
+    text-align: center;
+  }

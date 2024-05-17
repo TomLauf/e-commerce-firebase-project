@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STM</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="toolbar">
+        <span class="material-symbols-outlined">home</span>
+       <span class="material-symbols-outlined" id="showNewProductForm">add_box</span>
+       <span class="material-symbols-outlined" id="signOutBtn">exit_to_app</span>
+    </div>
+    <div>
+        <form id="newProductForm">
+            New Product <br>
+            <input type="text" placeholder="Name" required><br>
+            <input type="text" placeholder="Description" required><br>
+            <input type="url" placeholder="Image link" required><br>
+            <input type="number" placeholder="Price" required><br>
+            <input type="submit">
+        </form>
+    </div>
+    <div class="grid-container">
+        <div class="product">
+            <img>
+            <h3 class="productName">sunglasses</h3>
+            <h5 class="productDesc">the most beautiful sunglasses you've ever seen</h5>
+            <h3 class="productPrice">400$</h3>
+        </div>
+        <div class="product">
+            <img>
+            <h3 class="productName">sunglasses</h3>
+            <h5 class="productDesc">the most beautiful sunglasses you've ever seen</h5>
+            <h3 class="productPrice">400$</h3>
+        </div>
+        <div class="product">
+            <img>
+            <h3 class="productName">sunglasses</h3>
+            <h5 class="productDesc">the most beautiful sunglasses you've ever seen</h5>
+            <h3 class="productPrice">400$</h3>
+        </div>  
+        <div class="product">4</div>
+        <div class="product">5</div>
+        <div class="product">6</div>  
+        <div class="product">7</div>
+        <div class="product">8</div>
+        <div class="product">9</div>  
+      </div>  
+</body>
+<script type="module" src="admin.js"></script>
+</html>

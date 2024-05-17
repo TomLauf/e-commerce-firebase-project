@@ -3,7 +3,6 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
@@ -20,10 +19,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 //sign up
-
 let signUpBtn = document.getElementById("signUpBtn");
 let signInBtn = document.getElementById("signInBtn");
-let signOutBtn = document.getElementById("signOutBtn");
 
 function signUp() {
   let signUpEmail = document.getElementById("signUpEmail").value;
@@ -60,15 +57,10 @@ function signIn(){
   });
 }
 
-const userSignOut = () => {
-    signOut(auth).then(() => {
-        // window.location.href = "index.html";
-        alert("yay");
-    }).catch((error) => {
-        // An error happened.
-      });
+//admin page
+function showNewProductForm(){
+    document.getElementById("showNewProductForm").style="display: none;"
 }
 
 signUpBtn.addEventListener("click", signUp);
 signInBtn.addEventListener("click", signIn);
-signOutBtn.addEventListener("click", userSignOut);
