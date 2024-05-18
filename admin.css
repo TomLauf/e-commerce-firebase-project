@@ -23,20 +23,25 @@
     top: 70px;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: 432px 432px 432px;
-    /* grid-template-rows: 100px 100px 100px; */
-    background-color: #2196F3;
-    gap: 50px;
-    padding: 10px;
+#newProductForm{
+    display: none;
+}
 
+#table-wrapper {
+    width: 100%;
+    /* position: relative; */
+    padding-top:50px;   
+}
+
+#table-wrapper th {
+    font-weight: bolder;
+    color: #ddd;
+    padding: 15px;
   }
 
-  .product {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    /* padding: 20px; */
-    font-size: 30px;
-    text-align: center;
+  img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
   }

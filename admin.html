@@ -9,46 +9,32 @@
 </head>
 <body>
     <div class="toolbar">
-        <span class="material-symbols-outlined">home</span>
+        <span class="material-symbols-outlined" id="goToProducts">home</span>
        <span class="material-symbols-outlined" id="showNewProductForm">add_box</span>
        <span class="material-symbols-outlined" id="signOutBtn">exit_to_app</span>
     </div>
     <div>
         <form id="newProductForm">
             New Product <br>
-            <input type="text" placeholder="Name" required><br>
-            <input type="text" placeholder="Description" required><br>
-            <input type="url" placeholder="Image link" required><br>
-            <input type="number" placeholder="Price" required><br>
-            <input type="submit">
+            <input type="text" placeholder="Name" id="productName" required><br>
+            <input type="text" placeholder="Description" id="productDescription" required><br>
+            <input type="url" placeholder="Image link" id="productImg" required><br>
+            <input type="number" placeholder="Price" id="productPrice" required><br>
+            <input type="submit" id="addProduct">
         </form>
     </div>
-    <div class="grid-container">
-        <div class="product">
-            <img>
-            <h3 class="productName">sunglasses</h3>
-            <h5 class="productDesc">the most beautiful sunglasses you've ever seen</h5>
-            <h3 class="productPrice">400$</h3>
-        </div>
-        <div class="product">
-            <img>
-            <h3 class="productName">sunglasses</h3>
-            <h5 class="productDesc">the most beautiful sunglasses you've ever seen</h5>
-            <h3 class="productPrice">400$</h3>
-        </div>
-        <div class="product">
-            <img>
-            <h3 class="productName">sunglasses</h3>
-            <h5 class="productDesc">the most beautiful sunglasses you've ever seen</h5>
-            <h3 class="productPrice">400$</h3>
-        </div>  
-        <div class="product">4</div>
-        <div class="product">5</div>
-        <div class="product">6</div>  
-        <div class="product">7</div>
-        <div class="product">8</div>
-        <div class="product">9</div>  
-      </div>  
+    <div id="table-wrapper"> 
+        <table id="ProductsTable">
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </table>
+    </div>
 </body>
 <script type="module" src="admin.js"></script>
 </html>
