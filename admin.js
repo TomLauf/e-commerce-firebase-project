@@ -8,8 +8,10 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
   deleteDoc,
   doc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -36,6 +38,7 @@ let productName = document.getElementById("productName");
 let productDescription = document.getElementById("productDescription");
 let productImg = document.getElementById("productImg");
 let productPrice = document.getElementById("productPrice");
+// let updateProductBtn = document.getElementById("updateProduct");
 
 const userSignOut = () => {
   signOut(auth)
@@ -67,23 +70,42 @@ async function getProducts(){
     <td>${doc.data().productName}</td>
     <td>${doc.data().productDescription}</td>
     <td>${doc.data().productPrice}$</td>
-    <td><span class="material-symbols-outlined">edit</span></td>
+    <td><button onclick="openProductForm('${doc.id}')"><span class="material-symbols-outlined" >edit</span></button></td>
     <td><button onclick="deleteProduct('${doc.id}')"><span class="material-symbols-outlined">delete</span></button></td>`;
       table.appendChild(row);
   });
 }
 
+
 async function addProduct(event) {
   event.preventDefault();
+
   await addDoc(productsCollection, {
     productName: productName.value,
     productDescription: productDescription.value,
     productImg: productImg.value,
     productPrice: productPrice.value,
   });
+  
   alert("Product added successfully! Hooray!");
   document.getElementById("newProductForm").style.display = "none";
   getProducts();
+}
+
+async function openProductForm(productId){
+  const docRef = doc(db, "products",productId);
+  const product = await getDoc(docRef);
+  console.log(product);
+  let div = document.createElement("div");
+  div.innerHTML = `
+  <form id="updateProductForm" onsubmit="updateProduct('${product.data().id}')">
+  <input type="text" placeholder="Name" id="updatedProductName" value="${product.data().productName}"><br>
+            <input type="text" placeholder="updatedDescription" id="productDescription" value="${product.data().productDescription}"><br>
+            <input type="url" placeholder="Image link" id="updatedProductImg" value="${product.data().productImg}"><br>
+            <input type="number" placeholder="Price" id="updatedProductPrice" value="${product.data().productPrice}"><br>
+            <input type="submit" id="updateProduct">
+</form>`
+document.body.appendChild(div);
 }
 
 async function deleteProduct(productId){
@@ -91,11 +113,30 @@ async function deleteProduct(productId){
   getProducts();
 }
 
-window.deleteProduct = deleteProduct;
+async function updateProduct(event,productId){
+  event.preventDefault();
+  let productName = document.getElementById("updatedProductName").value;
+  let productDescription = document.getElementById("updatedDescription").value;
+  let productImg = document.getElementById("updatedProductImg").value;
+  let productPrice = document.getElementById("updatedProductPrice").value;
+  
+  await updateDoc(doc(db, "products", productId), {
+    productName: productName,
+    productDescription: productDescription,
+    productImg: productImg,
+    productPrice: productPrice,
+  });
+  document.getElementById("updateProductForm").style.display="none";
+  await getProducts();
+}
 
+window.deleteProduct = deleteProduct;
+window.openProductForm = openProductForm;
+window.updateProduct = updateProduct;
 
 signOutBtn.addEventListener("click", userSignOut);
 goToProducts.addEventListener("click", productsPage);
 showNewProductForm.addEventListener("click", showProductForm);
 addProductbtn.addEventListener("click", addProduct);
 window.addEventListener("load", getProducts);
+// updateProductBtn.addEventListener("click",updateProduct);
