@@ -79,6 +79,10 @@ position: absolute;
   .ProductForm > input{
     height: 20px;
   }
+  
+  #updateProductId{
+    display:none;
+  }
 
   #table-wrapper{
     padding: 10px; 

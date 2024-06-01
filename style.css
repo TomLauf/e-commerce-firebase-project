@@ -22,3 +22,22 @@ body{
 #signUpForm{
     display: none;
 }
+
+.button{
+cursor: pointer;
+  font-family: 'Noto Sans Hebrew', sans-serif;
+  background-color: #44555d;
+  border: none;
+  color: #F1F0E8;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+button:hover {
+    background-color: #F1F0E8;
+    color: #44555d;
+    transition: all 0.5s ease-out;
+  }

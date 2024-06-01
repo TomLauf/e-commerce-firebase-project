@@ -116,14 +116,16 @@ async function openProductForm(productId){
   document.getElementById("newProduct-formWrapper").classList.add("ProductForm-hidden");
   document.getElementById("newProduct-formWrapper").classList.remove("ProductForm-shown");
 
+  document.getElementById("updateProductId").value = productId;
   document.getElementById("updatedProductName").value = product.data().productName;
   document.getElementById("updatedDescription").value = product.data().productDescription;
   document.getElementById("updatedProductImg").value = product.data().productImg;
   document.getElementById("updatedProductPrice").value = product.data().productPrice;
 }
  
-async function updateProduct(event,productId){
+async function updateProduct(event){
   event.preventDefault();
+  let productId = document.getElementById("updateProductId").value;
   let productName = document.getElementById("updatedProductName").value;
   let productDescription = document.getElementById("updatedDescription").value;
   let productImg = document.getElementById("updatedProductImg").value;
@@ -155,4 +157,4 @@ goToProducts.addEventListener("click", productsPage);
 showNewProductFormBtn.addEventListener("click", showNewProductForm);
 addProductbtn.addEventListener("click", addProduct);
 window.addEventListener("load", getProducts);
-updateProductBtn.addEventListener("click",openProductForm);
+updateProductBtn.addEventListener("click",updateProduct);
