@@ -38,7 +38,7 @@ let productName = document.getElementById("productName");
 let productDescription = document.getElementById("productDescription");
 let productImg = document.getElementById("productImg");
 let productPrice = document.getElementById("productPrice");
-// let updateProductBtn = document.getElementById("updateProduct");
+let updateProductBtn = document.getElementById("updateProduct");
  
 const userSignOut = () => {
   signOut(auth)
@@ -59,7 +59,14 @@ function productsPage() {
 async function getProducts(){
   const querySnapshot = await getDocs(productsCollection);
   let table = document.getElementById("ProductsTable");
-  table.innerHTML = "";
+  table.innerHTML = `<tr>
+  <th></th>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Price</th>
+  <th></th>
+  <th></th>
+</tr>`;
   querySnapshot.forEach((doc) => {
     let row = document.createElement("tr");
     row.innerHTML = `
@@ -74,13 +81,18 @@ async function getProducts(){
 }
  
 function showNewProductForm(){
-  document.getElementById("newProductForm").style.display="block";
+  document.getElementById("newProduct-formWrapper").classList.remove("ProductForm-hidden");
+  document.getElementById("newProduct-formWrapper").classList.add("ProductForm-shown");
+  if(document.getElementById("updateProduct-formWrapper")){
+    document.getElementById("updateProduct-formWrapper").classList.add("ProductForm-hidden");
+    document.getElementById("updateProduct-formWrapper").classList.remove("ProductForm-shown");
+  }
+   
 }
  
 async function addProduct(event) {
   event.preventDefault();
- 
-  await addDoc(productsCollection, {
+   await addDoc(productsCollection, {
     productName: productName.value,
     productDescription: productDescription.value,
     productImg: productImg.value,
@@ -88,7 +100,8 @@ async function addProduct(event) {
   });
  
   alert("Product added successfully! Hooray!");
-  document.getElementById("newProductForm").style.display = "none";
+  document.getElementById("newProduct-formWrapper").classList.add("ProductForm-hidden");
+  document.getElementById("newProduct-formWrapper").classList.remove("ProductForm-shown");
   getProducts();
 }
  
@@ -97,24 +110,16 @@ async function openProductForm(productId){
   const product = await getDoc(docRef);
   console.log(product);
   const existingForm = document.getElementById("updateProductForm");
-  if (existingForm) {
-    existingForm.remove();
-  }
-  let div = document.createElement("div");
-  div.innerHTML = `
-  <form id="updateProductForm" onsubmit="updateProduct(event, '${product.id}')">
-  <input type="text" placeholder="Name" id="updatedProductName" value="${product.data().productName}"><br>
-            <input type="text" placeholder="updatedDescription" id="updatedDescription" value="${product.data().productDescription}"><br>
-            <input type="url" placeholder="Image link" id="updatedProductImg" value="${product.data().productImg}"><br>
-            <input type="number" placeholder="Price" id="updatedProductPrice" value="${product.data().productPrice}"><br>
-            <input type="submit" id="updateProductBtn" value = "Update Product">
-</form>`
-document.body.appendChild(div);
-}
- 
-async function deleteProduct(productId){
-  await deleteDoc(doc(db, "products", productId));
-  getProducts();
+
+  document.getElementById("updateProduct-formWrapper").classList.add("ProductForm-shown");
+  document.getElementById("updateProduct-formWrapper").classList.remove("ProductForm-hidden");
+  document.getElementById("newProduct-formWrapper").classList.add("ProductForm-hidden");
+  document.getElementById("newProduct-formWrapper").classList.remove("ProductForm-shown");
+
+  document.getElementById("updatedProductName").value = product.data().productName;
+  document.getElementById("updatedDescription").value = product.data().productDescription;
+  document.getElementById("updatedProductImg").value = product.data().productImg;
+  document.getElementById("updatedProductPrice").value = product.data().productPrice;
 }
  
 async function updateProduct(event,productId){
@@ -130,10 +135,17 @@ async function updateProduct(event,productId){
     productImg: productImg,
     productPrice: productPrice,
   });
-  document.getElementById("updateProductForm").style.display="none";
+  document.getElementById("updateProduct-formWrapper").classList.add("ProductForm-hidden");
+  document.getElementById("updateProduct-formWrapper").classList.remove("ProductForm-shown");
+
   await getProducts();
 }
  
+async function deleteProduct(productId){
+  await deleteDoc(doc(db, "products", productId));
+  getProducts();
+}
+
 window.deleteProduct = deleteProduct;
 window.openProductForm = openProductForm;
 window.updateProduct = updateProduct;
@@ -143,4 +155,4 @@ goToProducts.addEventListener("click", productsPage);
 showNewProductFormBtn.addEventListener("click", showNewProductForm);
 addProductbtn.addEventListener("click", addProduct);
 window.addEventListener("load", getProducts);
-// updateProductBtn.addEventListener("click",updateProduct);
+updateProductBtn.addEventListener("click",openProductForm);

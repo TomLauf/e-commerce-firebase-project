@@ -18,11 +18,6 @@
     text-align: center;
 }
 
-
-#newProductForm {
-  display: none;
-}
-
 #shopName{
     font-weight: 700;
     color:#F1F0E8;
@@ -63,4 +58,53 @@ position: absolute;
     border-radius: 4px;
     padding: 5px;
     width: 150px;
+  }
+
+  .ProductForm-hidden {
+    display: none;
+  }
+  
+  .ProductForm-shown{
+    padding: 20px; 
+    margin-top: 50px;
+    display: block;
+  }
+  
+  .ProductForm{
+  display: flex;
+  justify-content: flex-start;
+  gap: 3px;
+  }
+  
+  .ProductForm > input{
+    height: 20px;
+  }
+
+  #table-wrapper{
+    padding: 10px; 
+    margin-top: 70px;
+    display: block;
+  }
+
+  #ProductsTable{
+    width: 100%;
+  }
+
+  #ProductsTable th, td{
+  height: 1px;
+  text-align: center;
+  width: 10%;
+  border-right: 1px solid #ddd;
+  }
+
+  #ProductsTable th {
+    font-weight: bolder;
+    background-color:#96B6C5;
+    color: #F1F0E8;
+    padding: 15px;
+  }
+
+  #ProductsTable td {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
   }

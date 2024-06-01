@@ -18,24 +18,31 @@
     </span>
        <span class="material-symbols-outlined size-52" id="signOutBtn">exit_to_app</span> 
     </div>
-        <form id="newProductForm">
-            New Product <br>
+    <div id="forms">
+    <div id="newProduct-formWrapper" class="ProductForm-hidden">
+        New Product
+        <form id="newProductForm" class="ProductForm">
             <input type="text" placeholder="Name" id="productName" required><br>
             <input type="text" placeholder="Description" id="productDescription" required><br>
             <input type="url" placeholder="Image link" id="productImg" required><br>
             <input type="number" placeholder="Price" id="productPrice" required><br>
-            <input type="submit" id="addProduct">
+            <input type="submit" id="addProduct" value="add product">
         </form>
+    </div>
+<div id="updateProduct-formWrapper" class="ProductForm-hidden">
+    Update Product
+    <form id="updateProductForm" class="ProductForm" >
+    <input type="text" placeholder="Name" id="updatedProductName" ><br>
+    <input type="text" placeholder="updatedDescription" id="updatedDescription" ><br>
+    <input type="url" placeholder="Image link" id="updatedProductImg" ><br>
+    <input type="number" placeholder="Price" id="updatedProductPrice" ><br>
+    <input type="submit" id="updateProduct" value = "Update Product">
+  </form> 
+
+</div>
+    </div>
     <div id="table-wrapper"> 
         <table id="ProductsTable">
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th></th>
-              <th></th>
-            </tr>
           </table>
     </div>
 </body>
