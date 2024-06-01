@@ -5,17 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STM</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    Sign Up<br>
-    <input type="text" placeholder="email adress" id="signUpEmail"><br>
-    <input type="password" placeholder="password" id="signUpPass"><br>
-    <button id="signUpBtn">Sign Up</button>
-    <br><br>
+    <div id="signPage">
+        <button id="showSignInForm">Sign In</button><button id="showSignUpForm">Sign Up</button>
+        <br><br>
+    <div id="signUpForm">
+        Sign Up<br>
+        <input type="text" placeholder="email address" id="signUpEmail"><br>
+        <input type="password" placeholder="password" id="signUpPass"><br><br>
+        <button id="signUpBtn">Sign Up</button>
+    </div>
+    <div id="signInForm">
     Sign In<br>
     <input placeholder="email address" id="signInEmail"><br>
-    <input type="password" placeholder="password" id="signInPass"><br>
+    <input type="password" placeholder="password" id="signInPass"><br><br>
     <button id="signInBtn">Sign In</button>
+</div>
+</div>
 </body>
 <script type="module" src="app.js"></script>
 </html>

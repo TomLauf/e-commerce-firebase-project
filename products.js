@@ -25,6 +25,7 @@ import { getFirestore,getDocs,collection } from "https://www.gstatic.com/firebas
   const userSignOut = () => {
     signOut(auth).then(() => {
         window.location.href = "index.html";
+        alert("hoping to see you back soon");
     }).catch((error) => {
         // An error happened.
       });

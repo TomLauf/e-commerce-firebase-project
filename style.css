@@ -1,0 +1,24 @@
+*{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+body{
+  background-color: #96B6C5;
+}
+
+#signPage{
+    width: 30%;
+    text-align: center;
+    background-color: #F1F0E8;
+    position: absolute;
+    top:250px;
+    left: 500px;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+#signUpForm{
+    display: none;
+}

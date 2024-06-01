@@ -18,9 +18,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
-//sign up
+let showSignUpFormBtn = document.getElementById("showSignUpForm");
+let showSignInFormBtn = document.getElementById("showSignInForm");
+let signInForm = document.getElementById("signInForm");
+let signUpForm = document.getElementById("signUpForm");
 let signUpBtn = document.getElementById("signUpBtn");
 let signInBtn = document.getElementById("signInBtn");
+
+function showSignInForm(){
+  signUpForm.style.display="none";
+  signInForm.style.display="block";
+}
+
+function  showSignUpForm(){
+  signUpForm.style.display="block";
+  signInForm.style.display="none";
+}
 
 function signUp() {
   let signUpEmail = document.getElementById("signUpEmail").value;
@@ -62,5 +75,7 @@ function showNewProductForm(){
     document.getElementById("showNewProductForm").style="display: none;"
 }
 
+showSignUpFormBtn.addEventListener("click",showSignUpForm);
+showSignInFormBtn.addEventListener("click",showSignInForm);
 signUpBtn.addEventListener("click", signUp);
 signInBtn.addEventListener("click", signIn);
